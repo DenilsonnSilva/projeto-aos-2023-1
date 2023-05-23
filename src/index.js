@@ -21,7 +21,7 @@ app.use("/", moviesRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Tudo funcionando!" });
-}
+});
 
 sequelize.sync({ force: eraseDatabaseOnSync });
 
