@@ -8,6 +8,8 @@ import sequelize from "./services/database";
 import usersRoutes from "./routes/usersRoutes";
 import moviesRoutes from "./routes/moviesRoutes";
 
+const eraseDatabaseOnSync = process.env.ERASE_DATABASE_ON_SYNC === "true";
+
 const app = express();
 
 app.use(cors());
@@ -17,7 +19,9 @@ app.use(urlencoded({ extended: false }));
 app.use("/", usersRoutes);
 app.use("/", moviesRoutes);
 
-const eraseDatabaseOnSync = process.env.ERASE_DATABASE_ON_SYNC === "true";
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Tudo funcionando!" });
+}
 
 sequelize.sync({ force: eraseDatabaseOnSync });
 
