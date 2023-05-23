@@ -1,4 +1,3 @@
-import { DataTypes } from "sequelize";
 import sequelize from "../services/database";
 
 import User from "./user.model";

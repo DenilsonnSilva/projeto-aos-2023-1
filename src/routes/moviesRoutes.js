@@ -34,16 +34,16 @@ router.post("/movies/:movieId/favorite", UserAuthentication, favoriteMovie);
 
 router.post("/movies/:movieId/unfavorite", UserAuthentication, unfavoriteMovie);
 
-router.post("/movies/:moveId/comment", UserAuthentication, createComment);
+router.post("/movies/:movieId/comment", UserAuthentication, createComment);
 
 router.put(
-  "/movies/:moveId/comment/:commentId",
+  "/movies/:movieId/comment/:commentId",
   UserAuthentication,
   editComment
 );
 
 router.delete(
-  "/movies/:moveId/comment/:commentId",
+  "/movies/:movieId/comment/:commentId",
   UserAuthentication,
   deleteComment
 );

@@ -6,11 +6,10 @@ const userAuthentication = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.MY_SECRET, (error, decoded) => {
       if (error) {
-        return res.status(401).json({ message: "Invalid token!", token });
+        return res.status(401).json({ message: "Invalid token!" });
       }
 
       req.userId = decoded.userId;
-      req.username = decoded.username;
 
       next();
     });
