@@ -4,6 +4,7 @@ import {
   addMovie,
   deleteMovie,
   editMovie,
+  getMovie,
   listMovies,
 } from "../controllers/MovieController";
 
@@ -23,17 +24,12 @@ import UserAuthentication from "../middlewares/UserAuthentication";
 const router = Router();
 
 router.get("/movies", UserAuthentication, listMovies);
-
-router.post("/movie", UserAuthentication, addMovie);
-
-router.put("/movie/:movieId", UserAuthentication, editMovie);
-
-router.delete("/movie/:movieId", UserAuthentication, deleteMovie);
-
+router.get("/movies/:movieId", UserAuthentication, getMovie);
+router.post("/movies", UserAuthentication, addMovie);
+router.put("/movies/:movieId", UserAuthentication, editMovie);
+router.delete("/movies/:movieId", UserAuthentication, deleteMovie);
 router.post("/movies/:movieId/favorite", UserAuthentication, favoriteMovie);
-
 router.post("/movies/:movieId/unfavorite", UserAuthentication, unfavoriteMovie);
-
 router.post("/movies/:movieId/comment", UserAuthentication, createComment);
 
 router.put(

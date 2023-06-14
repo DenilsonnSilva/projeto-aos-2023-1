@@ -24,12 +24,10 @@ const favoriteMovie = async (req, res) => {
           userId,
         });
 
-        return res
-          .status(201)
-          .json({
-            message: "Movie favorited with success!",
-            newFavoritedMovie,
-          });
+        return res.status(201).json({
+          message: "Movie favorited with success!",
+          newFavoritedMovie,
+        });
       } else {
         return res.status(400).json({ message: "Movie is already favorited!" });
       }

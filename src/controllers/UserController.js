@@ -1,8 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model";
-import FavoritedMovie from "../models/favoritedMovie.model";
-import Comment from "../models/comment.model";
 
 const signUp = async (req, res) => {
   try {
@@ -55,29 +53,4 @@ const logIn = async (req, res) => {
   }
 };
 
-const showProfile = async (req, res) => {
-  try {
-    const userId = req.userId;
-
-    const user = await User.findByPk(userId);
-
-    if (user) {
-      const favoritedMovies = await FavoritedMovie.findAll({
-        where: { userId },
-      });
-
-      const comments = await Comment.findAll({ where: { userId } });
-
-      return res.status(200).json({ user, favoritedMovies, comments });
-    } else {
-      return res.status(404).json({ message: "User was not found!" });
-    }
-  } catch (error) {
-    console.error("Error while trying to show profile: ", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to show profile!" });
-  }
-};
-
-export { signUp, logIn, showProfile };
+export { signUp, logIn };

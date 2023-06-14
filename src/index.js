@@ -19,7 +19,7 @@ app.use(urlencoded({ extended: false }));
 app.use("/", usersRoutes);
 app.use("/", moviesRoutes);
 
-app.get("/", (req, res) => {
+app.get("/healthz", (req, res) => {
   res.status(200).json({ message: "Tudo funcionando!" });
 });
 
