@@ -14,15 +14,15 @@ const signUp = async (req, res) => {
         password: bcrypt.hashSync(password, 10),
       });
 
-      return res.status(201).json(newUser);
+      return res.status(201).json("Usuário cadastrado com sucesso.");
     } else {
       return res.status(400).json({
-        message: "There is already an user with this email!",
+        message: "Já existe um usuário com este email.",
       });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -40,18 +40,16 @@ const logIn = async (req, res) => {
           expiresIn: "1h",
         });
 
-        return res
-          .status(201)
-          .json({ message: "Logged in with success!", token });
+        return res.status(200).json({ message: "Logado com sucesso.", token });
       } else {
-        return res.status(401).json({ message: "Invalid credentials!" });
+        return res.status(401).json({ message: "Email ou senha inválidos." });
       }
     } else {
-      return res.status(401).json({ message: "Invalid credentials!" });
+      return res.status(401).json({ message: "Email ou senha inválidos." });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 

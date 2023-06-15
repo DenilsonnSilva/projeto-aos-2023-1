@@ -11,7 +11,7 @@ const Comment = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: { msg: "Comment can not be empty." },
+        notEmpty: { msg: "Comentário não pode ser vazio." },
       },
     },
   },

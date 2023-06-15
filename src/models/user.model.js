@@ -10,10 +10,10 @@ const User = sequelize.define(
       unique: true,
       validate: {
         notEmpty: {
-          msg: "Email address can not be empty.",
+          msg: "Endereço de email não pode ser vazio.",
         },
         isEmail: {
-          msg: "Enter a valid email address.",
+          msg: "Insira um endereço de email válido.",
         },
       },
     },
@@ -21,7 +21,7 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: { msg: "Password can not be empty." },
+        notEmpty: { msg: "Senha não pode ser vazia." },
       },
     },
   },

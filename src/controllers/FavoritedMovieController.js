@@ -25,18 +25,20 @@ const favoriteMovie = async (req, res) => {
         });
 
         return res.status(201).json({
-          message: "Movie favorited with success!",
+          message: "Filme favoritado com sucesso.",
           newFavoritedMovie,
         });
       } else {
-        return res.status(400).json({ message: "Movie is already favorited!" });
+        return res.status(400).json({ message: "Filme já está favoritado." });
       }
     } else {
-      return res.status(404).json({ message: "Movie or user was not found!" });
+      return res
+        .status(404)
+        .json({ message: "Filme ou usuário não encontrados." });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -61,16 +63,18 @@ const unfavoriteMovie = async (req, res) => {
 
         return res
           .status(200)
-          .json({ message: "Movie unfavorited with success!" });
+          .json({ message: "Filme desfavoritado com sucesso." });
       } else {
-        return res.status(400).json({ message: "Movie is not favorited!" });
+        return res.status(400).json({ message: "Filme não está favoritado." });
       }
     } else {
-      return res.status(404).json({ message: "Movie or user was not found!" });
+      return res
+        .status(404)
+        .json({ message: "Filme ou usuário não encontrados." });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 

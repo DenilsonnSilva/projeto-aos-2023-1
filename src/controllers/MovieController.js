@@ -41,11 +41,11 @@ const getMovie = async (req, res) => {
         isFavorited: !!favoritedMovie,
       });
     } else {
-      return res.status(404).json({ message: "Movie was not found!" });
+      return res.status(404).json({ message: "Filme não encontrado." });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -63,7 +63,7 @@ const addMovie = async (req, res) => {
     return res.status(201).json(newMovie);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -79,11 +79,11 @@ const editMovie = async (req, res) => {
 
       return res.status(200).json(movie);
     } else {
-      return res.status(404).json({ message: "Movie was not found!" });
+      return res.status(404).json({ message: "Filme não encontrado." });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -96,13 +96,13 @@ const deleteMovie = async (req, res) => {
     if (movie) {
       await movie.destroy();
 
-      return res.status(200).json({ message: "Movie deleted with success!" });
+      return res.status(200).json({ message: "Filme deletado com sucesso." });
     } else {
-      return res.status(404).json({ message: "Movie was not found!" });
+      return res.status(404).json({ message: "Filme não encontrado." });
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: error });
+    return res.status(500).json({ message: error.message });
   }
 };
 

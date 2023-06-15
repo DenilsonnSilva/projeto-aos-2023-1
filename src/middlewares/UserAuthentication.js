@@ -1,12 +1,14 @@
 import jwt from "jsonwebtoken";
 
 const userAuthentication = (req, res, next) => {
-  const token = req.headers["authorization"];
+  const authorizationHeader = req.headers.authorization;
 
-  if (token) {
+  if (authorizationHeader) {
+    const token = authorizationHeader.split(" ")[1];
+
     jwt.verify(token, process.env.MY_SECRET, (error, decoded) => {
       if (error) {
-        return res.status(401).json({ message: "Invalid token!" });
+        return res.status(401).json({ message: "Token inválido." });
       }
 
       req.userId = decoded.userId;
@@ -14,7 +16,7 @@ const userAuthentication = (req, res, next) => {
       next();
     });
   } else {
-    return res.status(401).json({ message: "Token not provided!" });
+    return res.status(401).json({ message: "Token não fornecido." });
   }
 };
 
