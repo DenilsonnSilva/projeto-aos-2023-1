@@ -4,19 +4,24 @@ import sequelize from "../services/database";
 const User = sequelize.define(
   "User",
   {
-    username: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        notEmpty: true,
+        notEmpty: {
+          msg: "Email address can not be empty.",
+        },
+        isEmail: {
+          msg: "Enter a valid email address.",
+        },
       },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: { msg: "Password can not be empty." },
       },
     },
   },

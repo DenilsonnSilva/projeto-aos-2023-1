@@ -23,10 +23,8 @@ const createComment = async (req, res) => {
       return res.status(404).json({ message: "Movie or user was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to create comment: ", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to create comment!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
@@ -45,10 +43,8 @@ const editComment = async (req, res) => {
       return res.status(404).json({ message: "Comment was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to edit comment: ", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to edit comment!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
@@ -66,10 +62,8 @@ const deleteComment = async (req, res) => {
       return res.status(404).json({ message: "Comment was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to delete comment: ", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to delete comment!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 

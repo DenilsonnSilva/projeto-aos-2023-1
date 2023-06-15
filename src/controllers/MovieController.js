@@ -8,8 +8,8 @@ const listMovies = async (req, res) => {
 
     res.status(200).json(movies);
   } catch (error) {
-    console.error("Error while trying to list movies: ", error);
-    res.status(500).json({ message: "Error while trying to list movies!" });
+    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -44,8 +44,8 @@ const getMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to get movie: ", error);
-    res.status(500).json({ message: "Error while trying to list movies!" });
+    console.error(error);
+    res.status(500).json({ message: error });
   }
 };
 
@@ -62,10 +62,8 @@ const addMovie = async (req, res) => {
 
     return res.status(201).json(newMovie);
   } catch (error) {
-    console.error("Error while trying to add movie", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to add movie!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
@@ -84,10 +82,8 @@ const editMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to edit movie", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to edit movie!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
@@ -105,10 +101,8 @@ const deleteMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to delete movie", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to delete movie!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 

@@ -35,10 +35,8 @@ const favoriteMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie or user was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying favorite movie:", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying favorite movie!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
@@ -71,10 +69,8 @@ const unfavoriteMovie = async (req, res) => {
       return res.status(404).json({ message: "Movie or user was not found!" });
     }
   } catch (error) {
-    console.error("Error while trying to unfavorite movie:", error);
-    return res
-      .status(500)
-      .json({ message: "Error while trying to unfavorite movie!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 

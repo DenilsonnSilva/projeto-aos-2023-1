@@ -8,25 +8,28 @@ const Movie = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: { msg: "Title can not be empty." },
       },
     },
-    gender: {
+    genre: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        notEmpty: { msg: "Genre can not be empty." },
       },
     },
     synopsis: {
       type: DataTypes.TEXT,
       allowNull: true,
+      validate: {
+        notEmpty: { msg: "Synopsis can not be empty." },
+      },
     },
     posterPath: {
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {
-        isUrl: true,
+        isUrl: { msg: "Enter a valid URL." },
       },
     },
   },

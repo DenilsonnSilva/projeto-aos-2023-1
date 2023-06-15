@@ -4,33 +4,33 @@ import User from "../models/user.model";
 
 const signUp = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ where: { username } });
+    const user = await User.findOne({ where: { email } });
 
     if (!user) {
       const newUser = await User.create({
-        username,
+        email,
         password: bcrypt.hashSync(password, 10),
       });
 
       return res.status(201).json(newUser);
     } else {
       return res.status(400).json({
-        message: "There is already an user with the same username!",
+        message: "There is already an user with this email!",
       });
     }
   } catch (error) {
-    console.error("Error while trying to sign up: ", error);
-    return res.status(500).json({ message: "Error while trying to sign up!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
 const logIn = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ where: { username } });
+    const user = await User.findOne({ where: { email } });
 
     if (user) {
       const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -40,7 +40,9 @@ const logIn = async (req, res) => {
           expiresIn: "1h",
         });
 
-        return res.status(201).json({ message: token });
+        return res
+          .status(201)
+          .json({ message: "Logged in with success!", token });
       } else {
         return res.status(401).json({ message: "Invalid credentials!" });
       }
@@ -48,8 +50,8 @@ const logIn = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials!" });
     }
   } catch (error) {
-    console.error("Error while trying to log in: ", error);
-    return res.status(500).json({ message: "Error while trying to log in!" });
+    console.error(error);
+    return res.status(500).json({ message: error });
   }
 };
 
