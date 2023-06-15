@@ -51,11 +51,11 @@ const getMovie = async (req, res) => {
 
 const addMovie = async (req, res) => {
   try {
-    const { title, gender, synopsis, posterPath } = req.body;
+    const { title, genre, synopsis, posterPath } = req.body;
 
     const newMovie = await Movie.create({
       title,
-      gender,
+      genre,
       synopsis,
       posterPath,
     });
@@ -70,12 +70,12 @@ const addMovie = async (req, res) => {
 const editMovie = async (req, res) => {
   try {
     const { movieId } = req.params;
-    const { title, gender, synopsis, posterPath } = req.body;
+    const { title, genre, synopsis, posterPath } = req.body;
 
     const movie = await Movie.findByPk(movieId);
 
     if (movie) {
-      await movie.update({ title, gender, synopsis, posterPath });
+      await movie.update({ title, genre, synopsis, posterPath });
 
       return res.status(200).json(movie);
     } else {
