@@ -30,7 +30,6 @@ const getMovie = async (req, res) => {
 
       const movieComments = await Comment.findAll({
         where: {
-          user_id: userId,
           movie_id: movieId,
         },
       });
