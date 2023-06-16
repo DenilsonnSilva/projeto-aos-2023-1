@@ -1,7 +1,7 @@
 import sequelize from "../services/database";
 
 import User from "./user.model";
-import Movie from "./user.model";
+import Movie from "./movie.model";
 
 const FavoritedMovie = sequelize.define(
   "FavoritedMovie",
