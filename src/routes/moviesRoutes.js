@@ -29,15 +29,17 @@ router.post("/movies", UserAuthentication, addMovie);
 router.put("/movies/:movieId", UserAuthentication, editMovie);
 router.delete("/movies/:movieId", UserAuthentication, deleteMovie);
 router.post("/movies/:movieId/favorite", UserAuthentication, favoriteMovie);
-router.post("/movies/:movieId/unfavorite", UserAuthentication, unfavoriteMovie);
+router.delete(
+  "/movies/:movieId/unfavorite",
+  UserAuthentication,
+  unfavoriteMovie
+);
 router.post("/movies/:movieId/comment", UserAuthentication, createComment);
-
 router.put(
   "/movies/:movieId/comment/:commentId",
   UserAuthentication,
   editComment
 );
-
 router.delete(
   "/movies/:movieId/comment/:commentId",
   UserAuthentication,
